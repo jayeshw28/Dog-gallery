@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import DogGallery from "./components/DogGallery/DogGallery";
-import ColorPicker from "./components/DogGallery/ColorPicker/ColorPicker";
+import ColorPicker from "./components/ColorPicker/ColorPicker";
 
 function App() {
   // state to store the background color
