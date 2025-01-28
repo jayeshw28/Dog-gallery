@@ -1,0 +1,19 @@
+.color-picker-container{
+    border: 1px solid #ddd;
+    background-color: #a4a4a4;
+    border-radius: 4px;
+    top: 20px;
+    margin: 20px;
+    padding: 20px;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.color-picker {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }

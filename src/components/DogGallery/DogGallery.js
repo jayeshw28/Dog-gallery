@@ -20,6 +20,7 @@ const DogGallery = () => {
     }
   }, [selectedBreed]);
 
+  // api call to fetch breeds
   const fetchBreeds = async () => {
     try {
       const response = await fetch("https://dog.ceo/api/breeds/list/all");
@@ -36,6 +37,7 @@ const DogGallery = () => {
     }
   };
 
+  // api call to fetch dog images
   const fetchDogImages = async (breed) => {
     try {
       setLoading(true);
@@ -62,6 +64,7 @@ const DogGallery = () => {
     }
   };
 
+  // get breed options
   const getBreedOptions = () => {
     const options = [];
     for (const [breed, subBreeds] of Object.entries(breeds)) {
@@ -76,6 +79,7 @@ const DogGallery = () => {
     return options.sort();
   };
 
+  // open modal
   const openModal = (image) => {
     setSelectedImage(image);
     document.body.style.overflow = "hidden";
@@ -90,8 +94,9 @@ const DogGallery = () => {
     }, 300);
   };
 
+  // loading cards
   const LoadingCards = () => (
-    <div>
+    <>
       {[...Array(8)].map((_, index) => (
         <div key={index} className="loading-card">
           <div className="loading-image" />
@@ -100,9 +105,9 @@ const DogGallery = () => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
-
+  // modal component
   const Modal = ({ image }) => {
     if (!image) return null;
 
@@ -125,9 +130,9 @@ const DogGallery = () => {
   };
 
   return (
-    <div className="breed-gallery">
+    <div className="dog-gallery">
       <div className="header">
-        <h1 className="gallery-title">Dog Breed Gallery</h1>
+        <h1 className="gallery-title">Dog Gallery</h1>
         <select
           className="breed-select"
           value={selectedBreed}
@@ -144,7 +149,6 @@ const DogGallery = () => {
           ))}
         </select>
       </div>
-
       {error && (
         <div className="error-message">
           {error}
@@ -156,7 +160,6 @@ const DogGallery = () => {
           </button>
         </div>
       )}
-
       <div className="gallery-grid">
         {loading ? (
           <LoadingCards />
@@ -182,7 +185,6 @@ const DogGallery = () => {
           ))
         )}
       </div>
-
       <Modal image={selectedImage} />
     </div>
   );
